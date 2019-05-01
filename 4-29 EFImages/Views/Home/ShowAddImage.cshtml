@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "ShowAddImage";
+}
+
+<h2>ShowAddImage</h2>
+
+<div class="well">
+    <form action="/home/addimage" method="post" enctype="multipart/form-data">
+        <input type="file" name="imageFile" />
+        <input type="text" name="title" placeholder="title" />
+        <button class="btn btn-warning">Upload Image</button>
+    </form>
+</div>
