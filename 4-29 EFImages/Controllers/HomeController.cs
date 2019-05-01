@@ -72,7 +72,6 @@ namespace _4_29_EFImages.Controllers
             ImagesRepository rep = new ImagesRepository(_connString);
             rep.AddLike(id);
             HttpContext.Session.Set<bool>($"liked{id}", true);
-            //HttpContext.Session.Set<bool>("dis", true);
             return Redirect("/");
         }
 
@@ -80,12 +79,9 @@ namespace _4_29_EFImages.Controllers
         {
             ImagesRepository rep = new ImagesRepository(_connString);
             IEnumerable<Image> images = rep.GetImages();
-            //IEnumerable<ImageLiked> images = rep.GetImages();
             foreach (Image i in images)
             {
                 i.Disabled = HttpContext.Session.Get<bool>($"liked{i.Id}");
-                //i.Disabled = HttpContext.Session.Get<bool>("dis");
-                //i.Disabled = true;
             }
             return Json(images);
         }
